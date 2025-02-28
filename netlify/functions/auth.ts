@@ -7,7 +7,7 @@ const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 const REDIRECT_URI = 'https://lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
 
 const handler: Handler = async (event) => {
-  console.log("I see following client_id", CLIENT_ID)
+  console.log("I see following client_idddd", CLIENT_ID)
 
   // Only allow GET requests
   if (event.httpMethod !== 'GET') {
