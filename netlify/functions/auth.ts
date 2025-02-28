@@ -64,10 +64,11 @@ const handler: Handler = async (event) => {
 
     // Redirect back to the main application
     return {
-      statusCode: 200,
+      statusCode: 302,
       headers: {
         'Set-Cookie': cookies.join(', '),
         'Cache-Control': 'no-cache',
+        'Location': '/'
       },
       body: JSON.stringify({ message: 'Token exchange successful' })
     };
