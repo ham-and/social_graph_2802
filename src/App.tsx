@@ -3,9 +3,10 @@ import { Search, Users, UserPlus, UsersRound, Loader2, AlertCircle, ChevronDown,
 
 // Constants for OAuth
 const CLIENT_ID = 'PKSAtFElFd989tO0uR1La2nk2es8Jupo';
-// const REDIRECT_URI = 'https://lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
-const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
-// const REDIRECT_URI = 'https://polina--lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
+
+// todo: it should come from vars, but I'm unable to fetch it from there
+// const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+const REDIRECT_URI = 'https://polina--lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
 
 console.log(`netlify-cra-env-vars v${process.env.REACT_APP_REDIRECT_URI}`)
 
