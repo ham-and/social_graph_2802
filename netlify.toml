@@ -2,3 +2,9 @@
   command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
+
+[context.production.environment]
+  REACT_APP_REDIRECT_URI = "https://polina--lively-mandazi-675d66.netlify.app/.netlify/functions/auth"
+
+[context."polina"]
+  REACT_APP_REDIRECT_URI = "https://lively-mandazi-675d66.netlify.app/.netlify/functions/auth"
