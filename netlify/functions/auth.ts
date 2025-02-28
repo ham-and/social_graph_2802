@@ -61,8 +61,8 @@ const handler: Handler = async (event) => {
     };
 
     const cookies = [
-      cookie.serialize('sc_access_token', access_token, cookieSettings),
-      cookie.serialize('sc_refresh_token', refresh_token, cookieSettings),
+      cookie.serialize('sc_oauth_token', access_token, cookieSettings),
+      cookie.serialize('sc_oauth_refresh_token', refresh_token, cookieSettings),
     ];
 
     // Redirect back to the main application

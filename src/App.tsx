@@ -5,6 +5,25 @@ import { Search, Users, UserPlus, UsersRound, Loader2, AlertCircle, ChevronDown,
 const CLIENT_ID = 'PKSAtFElFd989tO0uR1La2nk2es8Jupo';
 const REDIRECT_URI = 'https://lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
 
+declare type Dict<T> = { [key: string]: T | undefined };
+
+let cookieCache: Dict<string> = {};
+
+const Cookies = {
+  get(name: string) {
+    if (cookieCache.isEmpty) {
+      window.document.cookie.split(/\s*;\s*/).forEach((keyVal) => {
+        const [cookieName, cookieValue] = keyVal.split('=');
+        cookieCache[cookieName] = cookieValue;
+      });
+    }
+    return cookieCache[name];
+  }
+
+}
+
+const oauthToken = Cookies.get("sc_oauth_token");
+
 interface User {
   id: number;
   username: string;
@@ -119,7 +138,7 @@ function App() {
         `https://api.soundcloud.com/resolve?url=${encodeURIComponent(cleanedUrl)}`,
         {
           headers: {
-            'Authorization': `OAuth ${authToken}`,
+            'Authorization': `OAuth ${oauthToken}`,
             'accept': 'application/json; charset=utf-8'
           }
         }
@@ -143,7 +162,7 @@ function App() {
         `https://api.soundcloud.com/users/${userId}`,
         {
           headers: {
-            'Authorization': `OAuth ${authToken}`,
+            'Authorization': `OAuth ${oauthToken}`,
             'accept': 'application/json; charset=utf-8'
           }
         }
