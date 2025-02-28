@@ -14,7 +14,7 @@ let cookieCache: Dict<string> = {};
 const Cookies = {
   get(name: string) {
     console.log("in get Cookies")
-    if (cookieCache.isEmpty) {
+    if (!cookieCache.length) {
       console.log("after cookieCache is Empty")
       window.document.cookie.split(/\s*;\s*/).forEach((keyVal) => {
         console.log(keyVal)
@@ -22,6 +22,8 @@ const Cookies = {
         cookieCache[cookieName] = cookieValue;
       });
     }
+    console.log("getting", name)
+    console.log("getting value", cookieCache[name])
     return cookieCache[name];
   }
 }
