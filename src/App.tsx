@@ -22,7 +22,7 @@ const Cookies = {
 
 }
 
-const oauthToken = Cookies.get("sc_oauth_token");
+// const oauthToken = Cookies.get("sc_oauth_token");
 
 interface User {
   id: number;
@@ -114,7 +114,7 @@ function App() {
   };
 
   // Use custom token if provided, otherwise use default
-  const authToken = DEFAULT_AUTH_TOKEN;
+  // const authToken = DEFAULT_AUTH_TOKEN;
 
   const cleanUrl = (url: string): string => {
     // Remove leading/trailing whitespace
@@ -138,7 +138,7 @@ function App() {
         `https://api.soundcloud.com/resolve?url=${encodeURIComponent(cleanedUrl)}`,
         {
           headers: {
-            'Authorization': `OAuth ${oauthToken}`,
+            'Authorization': `OAuth ${Cookies.get("sc_oauth_token")}`,
             'accept': 'application/json; charset=utf-8'
           }
         }
@@ -162,7 +162,7 @@ function App() {
         `https://api.soundcloud.com/users/${userId}`,
         {
           headers: {
-            'Authorization': `OAuth ${oauthToken}`,
+            'Authorization': `OAuth ${Cookies.get("sc_oauth_token")}`,
             'accept': 'application/json; charset=utf-8'
           }
         }
@@ -222,7 +222,7 @@ function App() {
         `https://api.soundcloud.com/users/${userId}/followers?limit=200`,
         {
           headers: {
-            'Authorization': `OAuth ${authToken}`,
+            'Authorization': `OAuth ${Cookies.get("sc_oauth_token")}`,
             'accept': 'application/json; charset=utf-8'
           }
         }
@@ -239,7 +239,7 @@ function App() {
         `https://api.soundcloud.com/users/${userId}/followings?limit=200`,
         {
           headers: {
-            'Authorization': `OAuth ${authToken}`,
+            'Authorization': `OAuth ${Cookies.get("sc_oauth_token")}`,
             'accept': 'application/json; charset=utf-8'
           }
         }
@@ -296,7 +296,7 @@ function App() {
         `https://api.soundcloud.com/users/${userDetails.id}/followings?limit=${limit}&offset=${newOffset}`,
         {
           headers: {
-            'Authorization': `OAuth ${authToken}`,
+            'Authorization': `OAuth ${Cookies.get("sc_oauth_token")}`,
             'accept': 'application/json; charset=utf-8'
           }
         }
@@ -356,7 +356,7 @@ function App() {
             `https://api.soundcloud.com/users/${mutualFollow.id}/followers?limit=200`,
             {
               headers: {
-                'Authorization': `OAuth ${authToken}`,
+                'Authorization': `OAuth ${Cookies.get("sc_oauth_token")}`,
                 'accept': 'application/json; charset=utf-8'
               }
             }
@@ -374,7 +374,7 @@ function App() {
             `https://api.soundcloud.com/users/${mutualFollow.id}/followings?limit=200`,
             {
               headers: {
-                'Authorization': `OAuth ${authToken}`,
+                'Authorization': `OAuth ${Cookies.get("sc_oauth_token")}`,
                 'accept': 'application/json; charset=utf-8'
               }
             }
@@ -442,7 +442,7 @@ function App() {
           `https://api.soundcloud.com/users/${user.id}/likes/tracks?access=playable&limit=5&linked_partitioning=true`,
           {
             headers: {
-              'Authorization': `OAuth ${authToken}`,
+              'Authorization': `OAuth ${Cookies.get("sc_oauth_token")}`,
               'accept': 'application/json; charset=utf-8'
             }
           }
