@@ -15,6 +15,7 @@ const Cookies = {
   get(name: string) {
     if (cookieCache.isEmpty) {
       window.document.cookie.split(/\s*;\s*/).forEach((keyVal) => {
+        console.log(keyVal)
         const [cookieName, cookieValue] = keyVal.split('=');
         cookieCache[cookieName] = cookieValue;
       });
@@ -136,6 +137,9 @@ function App() {
   const resolveProfile = async (url: string) => {
     try {
       const cleanedUrl = cleanUrl(url);
+
+      const oauthToken = Cookies.get("sc_oauth_token");
+      console.log("oauthToken:", oauthToken)
       const response = await fetch(
         `https://api.soundcloud.com/resolve?url=${encodeURIComponent(cleanedUrl)}`,
         {
