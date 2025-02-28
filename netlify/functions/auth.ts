@@ -67,13 +67,12 @@ const handler: Handler = async (event) => {
 
     // Redirect back to the main application
     return {
-      statusCode: 302,
+      statusCode: 200,
       headers: {
-        'Location': '/',
         'Set-Cookie': cookies.join(', '),
         'Cache-Control': 'no-cache',
       },
-      body: 'Redirecting...',
+      body: JSON.stringify({ message: 'Token exchange successful' })
     };
   } catch (error) {
     console.error('Token exchange error:', error);
