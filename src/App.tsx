@@ -13,7 +13,9 @@ let cookieCache: Dict<string> = {};
 
 const Cookies = {
   get(name: string) {
+    console.log("in get Cookies")
     if (cookieCache.isEmpty) {
+      console.log("after cookieCache is Empty")
       window.document.cookie.split(/\s*;\s*/).forEach((keyVal) => {
         console.log(keyVal)
         const [cookieName, cookieValue] = keyVal.split('=');
@@ -22,7 +24,6 @@ const Cookies = {
     }
     return cookieCache[name];
   }
-
 }
 
 // const oauthToken = Cookies.get("sc_oauth_token");

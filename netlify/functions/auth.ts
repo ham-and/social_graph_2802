@@ -54,7 +54,7 @@ const handler: Handler = async (event) => {
 
     // Set secure HTTP-only cookies
     const cookieSettings = {
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: 'lax',
       path: '/',
