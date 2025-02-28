@@ -4,8 +4,8 @@ import { Search, Users, UserPlus, UsersRound, Loader2, AlertCircle, ChevronDown,
 // Constants for OAuth
 const CLIENT_ID = 'PKSAtFElFd989tO0uR1La2nk2es8Jupo';
 // const REDIRECT_URI = 'https://lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
-// const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
-const REDIRECT_URI = 'https://polina--lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
+const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+// const REDIRECT_URI = 'https://polina--lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
 
 declare type Dict<T> = { [key: string]: T | undefined };
 
@@ -13,17 +13,13 @@ let cookieCache: Dict<string> = {};
 
 const Cookies = {
   get(name: string) {
-    console.log("in get Cookies")
     if (!cookieCache.length) {
-      console.log("after cookieCache is Empty")
       window.document.cookie.split(/\s*;\s*/).forEach((keyVal) => {
         console.log(keyVal)
         const [cookieName, cookieValue] = keyVal.split('=');
         cookieCache[cookieName] = cookieValue;
       });
     }
-    console.log("getting", name)
-    console.log("getting value", cookieCache[name])
     return cookieCache[name];
   }
 }
@@ -65,7 +61,7 @@ interface Track {
 
 type SortOption = 'newest' | 'oldest' | 'popular';
 
-const DEFAULT_AUTH_TOKEN = '2-299772--SnEFFFFifg6lbOrLh9EgWm5';
+// const DEFAULT_AUTH_TOKEN = '2-299772--SnEFFFFifg6lbOrLh9EgWm5';
 const MUTUAL_FOLLOWS_LIMIT = 50;
 const BATCH_SIZE = 5; // Number of users to process in parallel
 

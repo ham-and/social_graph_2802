@@ -5,11 +5,8 @@ import cookie from 'cookie';
 const CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOUNDCLOUD_CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
-// const REDIRECT_URI = 'https://lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
 
 const handler: Handler = async (event) => {
-  console.log("I see following client_idddd", CLIENT_ID)
-
   // Only allow GET requests
   if (event.httpMethod !== 'GET') {
     return {
@@ -47,7 +44,6 @@ const handler: Handler = async (event) => {
     if (!tokenResponse.ok) {
       const errorResponse = await tokenResponse.json();
       throw new Error(`Token exchange failed: ${tokenResponse.statusText} ${errorResponse.error}`);
-      // throw new Error(`Token exchange failed: ${tokenResponse.statusText}`);
     }
 
     const { access_token, refresh_token } = await tokenResponse.json();
