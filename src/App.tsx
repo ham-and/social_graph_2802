@@ -7,6 +7,8 @@ const CLIENT_ID = 'PKSAtFElFd989tO0uR1La2nk2es8Jupo';
 const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 // const REDIRECT_URI = 'https://polina--lively-mandazi-675d66.netlify.app/.netlify/functions/auth';
 
+console.log(`netlify-cra-env-vars v${process.env.REACT_APP_REDIRECT_URI}`)
+
 declare type Dict<T> = { [key: string]: T | undefined };
 
 let cookieCache: Dict<string> = {};
