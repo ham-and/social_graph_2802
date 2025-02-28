@@ -70,7 +70,7 @@ const handler: Handler = async (event) => {
       statusCode: 302,
       headers: {
         'Location': '/',
-        'Set-Cookie': cookies,
+        'Set-Cookie': cookies.join(', '),
         'Cache-Control': 'no-cache',
       },
       body: 'Redirecting...',
